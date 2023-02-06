@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_10_171118) do
+ActiveRecord::Schema.define(version: 2023_01_31_083729) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -18,8 +18,17 @@ ActiveRecord::Schema.define(version: 2023_01_10_171118) do
     t.integer "record_id", null: false
     t.integer "blob_id", null: false
     t.datetime "created_at", null: false
+    t.text "detail"
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "book_reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
